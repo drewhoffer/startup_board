@@ -7,11 +7,11 @@ image: drewszoo/hunterr
 # Deploy to these servers.
 servers:
   web:
-    - hunterr.drewszoo.ca
+    - hunterr.ca
 proxy:
   ssl: true
-  host: hunterr.drewszoo.ca
-
+  host: hunterr.ca
+  
 # Credentials for your image host.
 registry:
   server: registry.digitalocean.com
