@@ -16,7 +16,7 @@ proxy:
 registry:
   server: registry.digitalocean.com
   username: 
-    - DO_USERNAME
+    - KAMAL_REGISTRY_USERNAME
   password:
     - KAMAL_REGISTRY_PASSWORD
 env:
