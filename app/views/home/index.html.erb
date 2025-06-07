@@ -1,0 +1,19 @@
+<div class="container mx-auto p-6 lg:px-8">
+  <div class="md:flex md:items-center md:justify-between">
+    <div class="min-w-0 flex-1">
+      <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">Find or Join Early-Stage Startups</h2>
+      <p class="mt-2 text-base/6 text-black">Discover innovative startups, connect with founders, and explore exciting opportunities in the startup ecosystem.</p>
+    </div>
+  </div>
+  <div class="mt-4">
+    <div class="mt-4 flex items-center gap-2 justify-between">
+      <div class="grid grid-cols-1 flex-1 ">
+        <input name="search" id="search" aria-label="Search" class="col-start-1 row-start-1 <%= input_classes.render %>" placeholder="Search epic ideas...">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-400 sm:size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+      </div>
+      <button type="button" class="<%= button_classes.render %>">Search</button>
+    </div>
+  </div>
+</div>
