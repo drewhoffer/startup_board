@@ -66,3 +66,5 @@ group :test do
 end
 
 gem "class_variants", "~> 1.1"
+
+gem "acts-as-taggable-on", "~> 12.0"

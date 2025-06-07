@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
@@ -19,6 +20,8 @@
   </head>
   <body class="h-full bg-white text-black">
     <%= render 'shared/nav_bar' %>
-    <%= yield %>
+    <div class="max-w-7xl mx-auto">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,38 @@
+<div class="container mx-auto p-6 lg:px-8">
+  <div class="md:flex md:items-center md:justify-between">
+    <div class="min-w-0 flex-1">
+      <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">Post your startup</h2>
+      <p class="mt-2 text-base/6 text-black">Showcase your dream here and get others excited to work with you.</p>
+    </div>
+  </div>
+  <%= form_with(model: @startup) do |form| %>
+    <% if @startup.errors.any? %>
+      <div class="mb-6 rounded-sm bg-red-100 p-4 text-red-700">
+        <h3 class="font-semibold">Please fix the following errors:</h3>
+        <ul class="mt-2 list-disc list-inside">
+          <% @startup.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="mt-8 space-y-6">
+      <div>
+        <%= form.label :name, class: "block text-sm font-medium" %>
+        <%= form.text_field :name, class: input_classes.render %>
+      </div>
+      <div>
+        <%= form.label :description, class: "block text-sm font-medium" %>
+        <%= form.text_area :description, rows: 5, class: input_classes.render %>
+      </div>
+      <div>
+        <%= form.label :tag_list%>
+        <div class="flex items-center">
+          <%= form.text_field :tag_list, value: @startup.tag_list.join(", "), class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>
+        </div>
+        <div>
+          <%= form.submit "Create Startup", class: button_classes.render %>
+        </div>
+      </div>
+    <% end %>
+  </div>
