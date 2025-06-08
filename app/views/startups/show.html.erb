@@ -1,2 +1,46 @@
-<h1>Startups#show</h1>
-<p>Find me in app/views/startups/show.html.erb</p>
+<div class="container mx-auto px-6 py-8 lg:px-8">
+  <div class="bg-white border border-black p-6 rounded-xs">
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-2xl font-bold text-black"><%= @startup.name %></h1>
+        <p class="mt-1 text-sm text-black max-w-xl"><%= @startup.description %></p>
+        <div class="mt-2 flex gap-2">
+          <% colors = ["bg-yellow-400", "bg-blue-400", "bg-green-400", "bg-red-400", "bg-purple-400", "bg-pink-400"] %>
+          <% @startup.tags.each do |tag| %>
+            <% color = colors.sample %>
+            <span class="<%= color %> text-black text-xs font-bold px-3 py-1 rounded-xs"><%= tag %></span>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <%= link_to "Visit Website", "https://example.com", class: button_classes.render %>
+      </div>
+    </div>
+    <div class="space-y-4">
+      <% roles = [
+        { title: "Developer", desc: "Looking for someone to dev this thing up!!!", taken: true },
+        { title: "Designer", desc: "Looking for someone to dev this thing up!!!", taken: false },
+        { title: "Marketing Manager", desc: "Looking for someone to dev this thing up!!!", taken: false },
+      ] %>
+      <% roles.each do |role| %>
+        <div class="flex justify-between items-center border p-4 rounded-md <%= role[:taken] ? 'border-green-500' : 'border-red-500' %>">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 border rounded-md <%= role[:taken] ? 'border-green-500' : 'border-red-500' %>"></div>
+            <div>
+              <h2 class="text-lg font-semibold <%= role[:taken] ? 'text-green-600' : 'text-red-600' %>"><%= role[:title] %></h2>
+              <p class="text-sm text-black"><%= role[:desc] %></p>
+            </div>
+          </div>
+          <% if role[:taken] %>
+            <span class="border border-green-600 text-green-600 px-4 py-1 rounded">Taken</span>
+          <% else %>
+            <%= link_to "Contact", "#", class: "border border-red-500 text-red-600 px-4 py-1 rounded hover:bg-red-50" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="mt-10 border border-black rounded-md p-6 text-center">
+      <h3 class="text-lg font-semibold">Share section TBD</h3>
+    </div>
+  </div>
+</div>

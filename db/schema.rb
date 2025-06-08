@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_08_133016) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_08_153833) do
   create_table "likes", force: :cascade do |t|
     t.integer "startup_id", null: false
     t.datetime "created_at", null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_133016) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "taggings", force: :cascade do |t|

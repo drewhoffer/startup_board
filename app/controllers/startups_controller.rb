@@ -50,7 +50,7 @@ class StartupsController < ApplicationController
 
   private
   def startup_params
-    params.expect(startup: [ :name, :description, :tag_list ])
+    params.expect(startup: [ :name, :description, :tag_list, :url ])
   end
 
   def set_startup
