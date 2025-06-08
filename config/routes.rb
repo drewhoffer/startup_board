@@ -21,6 +21,6 @@ Rails.application.routes.draw do
       post :like
     end
   end
-  root "home#index"
+  root "startups#index"
   get "search", to: "home#search", as: :search
 end

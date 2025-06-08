@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 
   def set_liked_startup_ids
     if Current.user
-      @liked_startup_ids = Like.where(user: Current.user.id).pluck(:startup_id)
+      @liked_startup_ids = Like.where(user_id: Current.user.id).pluck(:startup_id)
     end
   end
 end

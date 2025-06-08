@@ -1,0 +1,9 @@
+<% if alert %>
+  <div class="max-w-xl mx-auto">
+    <div class="flex items-center mx-auto justify-center rounded-sm border-2 border-red-500 text-black">
+      <p class="font-semibold text-lg p-4">
+        <%= flash[:alert]  %>
+      </p>
+    </div>
+  </div>
+<% end %>

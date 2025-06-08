@@ -21,6 +21,8 @@
   <body class="h-full bg-white text-black">
     <%= render 'shared/nav_bar' %>
     <div class="max-w-7xl mx-auto">
+      <%= render 'shared/notice' %>
+      <%= render 'shared/alert' %>
       <%= yield %>
       <footer class="mt-20 container border-t mx-auto py-6 text-center text-sm">
         <a href="/privacy" class="hover:underline">Privacy Policy</a> · 

@@ -1,5 +1,7 @@
 class Like < ApplicationRecord
   belongs_to :startup
-  validates :ip_address, presence: true
-  validates :startup_id, uniqueness: { scope: :ip_address }
+  belongs_to :user
+
+  validates :user_id, presence: true
+  validates :startup_id, uniqueness: { scope: :user_id }
 end

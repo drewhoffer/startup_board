@@ -3,6 +3,13 @@ class StartupsController < ApplicationController
   skip_before_action :authenticate, only: [ :index, :show ]
 
   def index
+    @q = Startup.ransack(params[:q])
+    @startups = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Startup.ransack(params[:q])
+    @startups = @q.result(distinct: true)
   end
 
   def new
@@ -23,7 +30,7 @@ class StartupsController < ApplicationController
   end
 
   def like
-    like = @startup.likes.find_by(Current.user.id)
+    like = @startup.likes.find_by(user_id: Current.user.id)
     if like
       like.destroy
       @startup.reload
@@ -32,7 +39,7 @@ class StartupsController < ApplicationController
         format.json { render json: { liked: false, count: @startup.likes.count } }
       end
     else
-      @startup.likes.create(Current.user.id)
+      @startup.likes.create(user_id: Current.user.id)
       @startup.reload
       respond_to do |format|
         format.turbo_stream
