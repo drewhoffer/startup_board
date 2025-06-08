@@ -7,9 +7,9 @@ module StyleHelper
           sm: "px-2.5 py-1.5 text-xs",
           md: "px-3 py-2 text-sm",
           lg: "px-4 py-2 text-sm",
-          xl: "px-4 py-2 text-base",
-          full: "w-full"
-        }
+          xl: "px-4 py-2 text-base"
+        },
+        full: "w-full"
       },
       defaults: {
         size: :md,

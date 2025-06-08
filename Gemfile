@@ -76,3 +76,5 @@ gem "authentication-zero", "~> 4.0"
 gem "omniauth"
 # Provides a mitigation against CVE-2015-9284 [https://github.com/cookpad/omniauth-rails_csrf_protection]
 gem "omniauth-rails_csrf_protection"
+
+gem "omniauth-google-oauth2", "~> 1.2"
