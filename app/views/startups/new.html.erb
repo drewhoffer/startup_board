@@ -28,7 +28,7 @@
       <div>
         <%= form.label :tag_list, "Tags" %>
         <div class="flex items-center">
-          <%= form.text_field :tag_list, value: @startup.tag_list.join(", "), class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>
+          <%= form.text_field :tag_list, value: @startup.tag_list.join(", "), placeholder: "Get some AI buzzwords in here to build hype...", class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>
         </div>
       </div>
       <div>

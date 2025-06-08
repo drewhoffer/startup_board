@@ -22,5 +22,8 @@ Rails.application.routes.draw do
     end
   end
   root "startups#index"
-  get "search", to: "home#search", as: :search
+  get "search", to: "startups#search", as: :search
+  resources :roles do
+    resources :applications, only: [ :create ]
+  end
 end

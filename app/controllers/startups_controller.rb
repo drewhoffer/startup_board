@@ -1,6 +1,6 @@
 class StartupsController < ApplicationController
   before_action :set_startup, only: [ :show, :like ]
-  skip_before_action :authenticate, only: [ :index, :show ]
+  skip_before_action :authenticate, only: [ :index, :show, :search ]
 
   def index
     @q = Startup.ransack(params[:q])
@@ -18,6 +18,7 @@ class StartupsController < ApplicationController
 
   def create
     @startup = Startup.new(startup_params.except(:role_names))
+    @startup.user = Current.user
       if params[:startup][:role_names].present?
         role_titles = params[:startup][:role_names].split(",")
         role_titles.each do |title|

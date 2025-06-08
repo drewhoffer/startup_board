@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_08_155012) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_08_163746) do
+  create_table "applications", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_applications_on_role_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "startup_id", null: false
     t.datetime "created_at", null: false
@@ -46,6 +55,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_155012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -90,9 +101,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_155012) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "applications", "roles"
+  add_foreign_key "applications", "users"
   add_foreign_key "likes", "startups"
   add_foreign_key "likes", "users"
   add_foreign_key "roles", "startups"
   add_foreign_key "sessions", "users"
+  add_foreign_key "startups", "users"
   add_foreign_key "taggings", "tags"
 end

@@ -1,0 +1,13 @@
+<% if role.taken? %>
+  <span class="font-semibold">Taken</span>
+<% elsif Current.user && role.startup.user == Current.user %>
+  <span class="font-semibold">You own this guy</span>
+<% elsif Current.user && role.applicants.include?(Current.user) %>
+  <span class="font-semibold">Applied</span>
+<% else %>
+  <% if Current.user %>
+    <%= button_to "Apply", role_applications_path(role), method: :post, class: button_classes.render %>
+  <% else %>
+    <span class="font-medium">Open (sign in to apply)</span>
+  <% end %>
+<% end %>
