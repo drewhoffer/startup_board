@@ -26,10 +26,15 @@
         <%= form.text_area :description, rows: 5, class: input_classes.render %>
       </div>
       <div>
-        <%= form.label :tag_list%>
+        <%= form.label :tag_list, "Tags" %>
         <div class="flex items-center">
           <%= form.text_field :tag_list, value: @startup.tag_list.join(", "), class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>
         </div>
+      </div>
+      <div>
+        <%= form.label :role_names, "Collaborators" %>
+        <div class="flex items-center">
+          <%= form.text_field :role_names, value: @startup.roles.map(&:title).join(','), placeholder: "Need a tech guru? Designer?", class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>        </div>
       </div>
       <div>
         <%= form.label :url, "Website (optional)", class: "block text-sm font-medium" %>

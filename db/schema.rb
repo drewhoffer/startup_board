@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_08_153833) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_08_155012) do
   create_table "likes", force: :cascade do |t|
     t.integer "startup_id", null: false
     t.datetime "created_at", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_153833) do
     t.index ["startup_id", "user_id"], name: "index_likes_on_startup_id_and_user_id", unique: true
     t.index ["startup_id"], name: "index_likes_on_startup_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "status"
+    t.integer "startup_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["startup_id"], name: "index_roles_on_startup_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -82,6 +92,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_153833) do
 
   add_foreign_key "likes", "startups"
   add_foreign_key "likes", "users"
+  add_foreign_key "roles", "startups"
   add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "tags"
 end

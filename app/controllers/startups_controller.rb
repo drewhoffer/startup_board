@@ -17,7 +17,13 @@ class StartupsController < ApplicationController
   end
 
   def create
-    @startup = Startup.new(startup_params)
+    @startup = Startup.new(startup_params.except(:role_names))
+      if params[:startup][:role_names].present?
+        role_titles = params[:startup][:role_names].split(",")
+        role_titles.each do |title|
+          @startup.roles.build(title: title.strip, status: :open) # or your default status
+        end
+      end
     if @startup.save
       redirect_to root_path, notice: "Startup was successfully created."
     else
@@ -50,7 +56,7 @@ class StartupsController < ApplicationController
 
   private
   def startup_params
-    params.expect(startup: [ :name, :description, :tag_list, :url ])
+    params.expect(startup: [ :name, :description, :tag_list, :url, :role_names ])
   end
 
   def set_startup

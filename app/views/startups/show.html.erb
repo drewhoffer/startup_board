@@ -17,12 +17,7 @@
       </div>
     </div>
     <div class="space-y-4">
-      <% roles = [
-        { title: "Developer", desc: "Looking for someone to dev this thing up!!!", taken: true },
-        { title: "Designer", desc: "Looking for someone to dev this thing up!!!", taken: false },
-        { title: "Marketing Manager", desc: "Looking for someone to dev this thing up!!!", taken: false },
-      ] %>
-      <% roles.each do |role| %>
+      <% @startup.roles.each do |role| %>
         <div class="flex justify-between items-center border p-4 rounded-md <%= role[:taken] ? 'border-green-500' : 'border-red-500' %>">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 border rounded-md <%= role[:taken] ? 'border-green-500' : 'border-red-500' %>"></div>
