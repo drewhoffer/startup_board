@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     end
   end
   root "home#index"
+  get "search", to: "home#search", as: :search
 end

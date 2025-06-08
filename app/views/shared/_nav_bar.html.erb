@@ -1,15 +1,15 @@
 <header class="bg-white ">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-    <a href="#" class="-m-1.5 p-1.5">
+    <%= link_to root_path, class: "-m-1.5 p-1.5" do %>
       <span class="sr-only">Hunterr</span>
       <svg width="200" height="60" xmlns="http://www.w3.org/2000/svg">
         <text x="0" y="45" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="black">
           Hunterr
         </text>
       </svg>
-    </a>
+    <% end %>
     <div class="flex flex-1 gap-2 items-center md:gap-5 justify-end">
-      <a href="#" class="text-sm/6 font-semibold">Explore Startups</a>
+      <%= link_to 'Explore Startups', search_path, class: "text-sm/6 font-semibold" %>
       <%= link_to 'Submit Startup', new_startup_path, class: "text-sm/6 font-semibold" %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />

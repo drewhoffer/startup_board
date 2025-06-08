@@ -1,15 +1,14 @@
 <div class="container mx-auto p-6 lg:px-8">
   <div class="md:flex md:items-center md:justify-between">
     <div class="min-w-0 flex-1">
-      <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">Find or Join Early-Stage Startups</h2>
-      <p class="mt-2 text-base/6 text-black">Discover innovative startups, connect with founders, and explore exciting opportunities in the startup ecosystem.</p>
+      <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">Search Results</h2>
     </div>
   </div>
   <div>
     <div class="mt-4 flex items-center gap-2 justify-between">
-      <%= search_form_for @q, url: search_path, method: :get, html: { class: 'w-full flex items-center gap-2 justify-between' } do |f| %>
+      <%= search_form_for @q, url: search_path, method: :get, html: { class: 'w-full flex items-center gap-2 justify-between', data: { controller: 'auto-submit', turbo_permanent: true } } do |f| %>
         <div class="grid grid-cols-1 flex-1 ">
-          <%= f.search_field :name_cont, class: "col-start-1 row-start-1 pl-10 #{input_classes.render}", placeholder: "Search epic ideas..." %>
+          <%= f.search_field :name_cont, class: "col-start-1 row-start-1 pl-10 #{input_classes.render}", placeholder: "Search epic ideas...", data: { action: 'keyup->auto-submit#submit' }, autofocus: true %>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-black sm:size-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
           </svg>
@@ -19,10 +18,10 @@
     </div>
   </div>
   <main class="mt-8 space-y-6">
-    <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">Newest startups</h2>
     <% if @startups.empty? %>
       <div class="text-center text-black">
         <p class="text-lg font-semibold">No startups found!</p>
+        <p class="mt-2">Maybe you should make one?</p>
         <p class="mt-2">¯\_(ツ)_/¯</p>
       </div>
     <% end %>
