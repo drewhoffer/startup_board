@@ -68,3 +68,5 @@ end
 gem "class_variants", "~> 1.1"
 
 gem "acts-as-taggable-on", "~> 12.0"
+
+gem "ransack", "~> 4.3"

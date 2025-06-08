@@ -5,4 +5,8 @@ class Startup < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 25, maximum: 500 }
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name description created_at]
+  end
 end

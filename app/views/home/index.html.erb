@@ -7,16 +7,24 @@
   </div>
   <div class="mt-4">
     <div class="mt-4 flex items-center gap-2 justify-between">
-      <div class="grid grid-cols-1 flex-1 ">
-        <input name="search" id="search" aria-label="Search" class="col-start-1 row-start-1 pl-10 <%= input_classes.render %>" placeholder="Search epic ideas...">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-black sm:size-4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-        </svg>
-      </div>
-      <button type="button" class="<%= button_classes.render %>">Search</button>
+      <%= search_form_for @q, url: root_path, method: :get, html: { class: 'w-full flex items-center gap-2 justify-between' } do |f| %>
+        <div class="grid grid-cols-1 flex-1 ">
+          <%= f.search_field :name_cont, class: "col-start-1 row-start-1 pl-10 #{input_classes.render}", placeholder: "Search epic ideas..." %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-black sm:size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+        </div>
+        <%= f.submit 'Search', class: button_classes.render %>
+      <% end %>
     </div>
   </div>
   <main class="mt-8 space-y-6">
+    <% if @startups.empty? %>
+      <div class="text-center text-black">
+        <p class="text-lg font-semibold">No startups found!</p>
+        <p class="mt-2">¯\_(ツ)_/¯</p>
+      </div>
+    <% end %>
     <% @startups.each do |startup| %>
       <div class="border cursor-pointer rounded-sm border-black p-6 w-full bg-white block no-underline">
         <%= link_to startup_path(startup), class: "block no-underline" do %>
