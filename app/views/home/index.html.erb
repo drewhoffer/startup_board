@@ -18,29 +18,34 @@
   </div>
   <main class="mt-8 space-y-6">
     <% @startups.each do |startup| %>
-      <%= link_to startup_path(startup), class: "border cursor-pointer rounded-sm border-black p-6 w-full bg-white block no-underline" do %>
-        <div class="flex items-center gap-2 mb-2">
-          <span class="text-xl">🚀</span>
-          <span class="font-semibold text-lg"><%= startup.name %></span>
-        </div>
-        <div class="mb-2 text-sm text-black">
-          <%= startup.description %>
-        </div>
-        <% if startup.tags.present? %>
-          <div class="mb-1 text-sm">
-            <span class="font-medium">🏷 Tags:</span>
-            <% colors = ["#2196F3", "#FF3D00", "#00E676", "#FFEB3B", "#6200EA"] %>
-            <% startup.tags.each_with_index do |tag, i| %>
-              <span class="rounded-sm inline-block px-2 py-1 mr-1 mb-1 text-xs font-semibold text-black" style="background-color: <%= colors[i % colors.size] %>;">
-                <%= tag %>
-              </span>
-            <% end %>
+      <div class="border cursor-pointer rounded-sm border-black p-6 w-full bg-white block no-underline">
+        <%= link_to startup_path(startup), class: "block no-underline" do %>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🚀</span>
+            <span class="font-semibold text-lg"><%= startup.name %></span>
+          </div>
+          <div class="mb-2 text-sm text-black">
+            <%= startup.description %>
+          </div>
+          <% if startup.tags.present? %>
+            <div class="mb-1 text-sm">
+              <span class="font-medium">🏷 Tags:</span>
+              <% colors = ["#2196F3", "#FF3D00", "#00E676", "#FFEB3B", "#6200EA"] %>
+              <% startup.tags.each_with_index do |tag, i| %>
+                <span class="rounded-sm inline-block px-2 py-1 mr-1 mb-1 text-xs font-semibold text-black" style="background-color: <%= colors[i % colors.size] %>;">
+                  <%= tag %>
+                </span>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="text-xs text-black">
+            🕒 Submitted <%= time_ago_in_words(startup.created_at) %> ago
           </div>
         <% end %>
-        <div class="text-xs text-black">
-          🕒 Submitted <%= time_ago_in_words(startup.created_at) %> ago
+        <div class="flex items-center gap-2 mt-2">
+          <%= render 'startups/like', startup: startup %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </main>
 </div>

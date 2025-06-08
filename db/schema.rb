@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_07_192341) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_07_213000) do
+  create_table "likes", force: :cascade do |t|
+    t.integer "startup_id", null: false
+    t.string "ip_address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["startup_id", "ip_address"], name: "index_likes_on_startup_id_and_ip_address", unique: true
+    t.index ["startup_id"], name: "index_likes_on_startup_id"
+  end
+
   create_table "startups", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -49,5 +58,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_07_192341) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  add_foreign_key "likes", "startups"
   add_foreign_key "taggings", "tags"
 end
