@@ -78,3 +78,5 @@ gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 
 gem "omniauth-google-oauth2", "~> 1.2"
+
+gem "mailgun-ruby", "~> 1.3"
