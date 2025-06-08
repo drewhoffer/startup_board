@@ -1,15 +1,7 @@
 class StartupsController < ApplicationController
   before_action :set_startup, only: [ :show, :like ]
-  before_action :authenticate_user!, except: [ :index, :show, :like ]
+  skip_before_action :authenticate, only: [ :index, :show ]
 
-  # Ensure the user is an admin for create and new actions
-  before_action :authenticate_admin!, only: [ :new, :create ]
-
-  # Ensure the user is an admin for like action
-  before_action :authenticate_admin!, only: [ :like ]
-
-  # Ensure the user is an admin for index action
-  before_action :authenticate_admin!, only: [ :index ]
   def index
   end
 
@@ -31,8 +23,7 @@ class StartupsController < ApplicationController
   end
 
   def like
-    ip = request.remote_ip
-    like = @startup.likes.find_by(ip_address: ip)
+    like = @startup.likes.find_by(Current.user.id)
     if like
       like.destroy
       @startup.reload
@@ -41,7 +32,7 @@ class StartupsController < ApplicationController
         format.json { render json: { liked: false, count: @startup.likes.count } }
       end
     else
-      @startup.likes.create(ip_address: ip)
+      @startup.likes.create(Current.user.id)
       @startup.reload
       respond_to do |format|
         format.turbo_stream

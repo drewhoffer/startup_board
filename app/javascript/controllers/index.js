@@ -13,3 +13,7 @@ application.register("tag", TagController)
 
 import AutoSubmit from "@stimulus-components/auto-submit"
 application.register('auto-submit', AutoSubmit)
+
+Turbo.StreamActions.redirect = function () {
+  Turbo.visit(this.target);
+};

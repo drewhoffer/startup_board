@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/privacy", to: "static_pages#privacy"
+  get "/terms", to: "static_pages#terms"
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"

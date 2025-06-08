@@ -22,6 +22,10 @@
     <%= render 'shared/nav_bar' %>
     <div class="max-w-7xl mx-auto">
       <%= yield %>
+      <footer class="mt-20 container border-t mx-auto py-6 text-center text-sm">
+        <a href="/privacy" class="hover:underline">Privacy Policy</a> · 
+        <a href="/terms" class="hover:underline">Terms of Service</a>
+      </footer>
     </div>
   </body>
 </html>
