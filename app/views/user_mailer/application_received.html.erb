@@ -1,0 +1,8 @@
+<p>Congrats, we got one! 🎉</p>
+<p>
+  The user <strong><%= @applicant.email %></strong> wants to collaborate,<br>
+  specifically for the role <strong><%= @role.title %></strong> at <strong><%= @startup.name %></strong>.
+</p>
+<p>Please get in contact to discuss. If it's a match, click the link below to confirm:</p>
+<p><%= link_to "Confirm and lock in applicant", @confirmation_url %></p>
+<p>🚀 Good luck!</p>

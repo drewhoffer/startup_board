@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   root "startups#index"
   get "search", to: "startups#search", as: :search
   resources :roles do
+    member do
+      get :confirm_applicant
+    end
     resources :applications, only: [ :create ]
   end
 end
