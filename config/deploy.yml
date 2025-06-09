@@ -3,7 +3,6 @@ service: hunterr
 
 # Name of the container image.
 image: drewszoo/hunterr
-
 # Deploy to these servers.
 servers:
   web:
@@ -40,6 +39,9 @@ asset_path: /rails/public/assets
 builder:
   arch: amd64
 
+ssh:
+  user:
+    - KAMAL_SSH_USER
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:

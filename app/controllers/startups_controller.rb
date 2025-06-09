@@ -4,7 +4,7 @@ class StartupsController < ApplicationController
 
   def index
     @q = Startup.ransack(params[:q])
-    @startups = @q.result(distinct: true)
+    @startups = @q.result(distinct: true).order(created_at: :desc)
   end
 
   def search
