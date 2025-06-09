@@ -18,7 +18,7 @@ class UserMailer < ApplicationMailer
     @startup = @role.startup
     @applicant = params[:applicant]
 
-    @confirmation_url = confirm_applicant_role(@startup, @role, applicant_id: @applicant.id)
+    @confirmation_url = confirm_applicant_role_url(@startup, @role, applicant_id: @applicant.id)
 
     mail(
       to: @startup.user.email,

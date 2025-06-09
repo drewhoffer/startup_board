@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_08_163746) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_09_004800) do
   create_table "applications", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "role_id", null: false
@@ -37,7 +37,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_163746) do
     t.integer "startup_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["startup_id"], name: "index_roles_on_startup_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -106,6 +108,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_163746) do
   add_foreign_key "likes", "startups"
   add_foreign_key "likes", "users"
   add_foreign_key "roles", "startups"
+  add_foreign_key "roles", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "startups", "users"
   add_foreign_key "taggings", "tags"
