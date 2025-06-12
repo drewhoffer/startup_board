@@ -1,0 +1,6 @@
+<% if Current.user && (Current.user == startup.user) %>
+  <div class="flex gap-5 items-center my-2 justify-end">
+    <%= link_to 'Edit Startup', edit_startup_path(startup), class: button_classes.render %>
+    <%= link_to 'Delete Startup', startup, method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete #{startup.name}?"}, class: "bg-red-400 text-red-400 hover:bg-red-400 #{button_classes.render} " %>
+  </div>
+<% end %>

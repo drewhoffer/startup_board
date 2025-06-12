@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get  "/auth/:provider/callback", to: "sessions/omniauth#create"
   post "/auth/:provider/callback", to: "sessions/omniauth#create"
   get "up" => "rails/health#show", as: :rails_health_check
-  resources :startups, only: [ :index, :new, :create, :show ] do
+  resources :startups do
     member do
       post :like
     end

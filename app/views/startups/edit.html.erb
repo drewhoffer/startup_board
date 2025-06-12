@@ -1,0 +1,47 @@
+<div class="container mx-auto p-6 lg:px-8">
+  <div class="md:flex md:items-center md:justify-between">
+    <div class="min-w-0 flex-1">
+      <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">Post your startup</h2>
+      <p class="mt-2 text-base/6 text-black">Showcase your dream here and get others excited to work with you.</p>
+    </div>
+  </div>
+  <%= form_with(model: @startup) do |form| %>
+    <% if @startup.errors.any? %>
+      <div class="mb-6 rounded-sm border-2 border-red-500  p-4 text-black">
+        <h3 class="font-semibold">Please fix the following errors:</h3>
+        <ul class="mt-2 list-disc list-inside">
+          <% @startup.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="mt-8 space-y-6">
+      <div>
+        <%= form.label :name, class: "block text-sm font-medium" %>
+        <%= form.text_field :name, class: input_classes.render %>
+      </div>
+      <div>
+        <%= form.label :description, class: "block text-sm font-medium" %>
+        <%= form.text_area :description, rows: 5, class: input_classes.render %>
+      </div>
+      <div>
+        <%= form.label :tag_list, "Tags" %>
+        <div class="flex items-center">
+          <%= form.text_field :tag_list, value: @startup.tag_list.join(", "), placeholder: "Get some AI buzzwords in here to build hype...", class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>
+        </div>
+      </div>
+      <div>
+        <%= form.label :role_names, "Collaborators" %>
+        <div class="flex items-center">
+          <%= form.text_field :role_names, value: @startup.roles.map(&:title).join(','), placeholder: "Need a tech guru? Designer?", class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>        </div>
+      </div>
+      <div>
+        <%= form.label :url, "Website (optional)", class: "block text-sm font-medium" %>
+        <%= form.url_field :url, class: input_classes.render, placeholder: "https://your-startup-website.com" %>
+      </div>
+      <div>
+        <%= form.submit "Edit Startup", class: button_classes.render %>
+      </div>
+    <% end %>
+  </div>
