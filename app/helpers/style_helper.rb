@@ -20,7 +20,7 @@ module StyleHelper
 
   def input_classes
     class_variants(
-      base: "block rounded-sm bg-white font-medium placeholder:font-normal text-black outline-1 -outline-offset-1 outline-black placeholder:text-black focus:outline-2 focus:-outline-offset-2 focus:outline-black",
+      base: "block rounded-sm bg-white font-medium placeholder:font-normal text-black outline-1 -outline-offset-1 outline-black placeholder:text-black/60 focus:outline-2 focus:-outline-offset-2 focus:outline-black",
       variants: {
         size: {
           sm: "py-1.5 px-2  text-xs",

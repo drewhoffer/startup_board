@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-2 text-sm">
+  <% unless startup.website_url.blank? %>
+    <%= link_to 'Visit Website', startup.website_url, class: "hover:underline" %>
+  <% end %>
+  <% unless startup.instagram_url.blank? %>
+    <%= link_to 'Instagram', startup.instagram_url, class: "hover:underline" %>
+  <% end %>
+  <% unless startup.twitter_url.blank? %>
+    <%= link_to 'Twitter', startup.twitter_url, class: "hover:underline" %>
+  <% end %>
+  <% unless startup.linkedin_url.blank? %>
+    <%= link_to 'LinkedIn', startup.linkedin_url, class: "hover:underline" %>
+  <% end %>
+  <% unless startup.github_url.blank? %>
+    <%= link_to 'GitHub', startup.github_url, class: "hover:underline" %>
+  <% end %>
+  <% unless startup.discord_url.blank? %>
+    <%= link_to 'Discord', startup.discord_url, class: "hover:underline" %>
+  <% end %>
+</div>

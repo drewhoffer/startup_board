@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_09_004800) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_12_233437) do
   create_table "applications", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "role_id", null: false
@@ -56,8 +56,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_09_004800) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "url"
+    t.string "website_url"
     t.integer "user_id", null: false
+    t.string "discord_url"
+    t.string "github_url"
+    t.string "linkedin_url"
+    t.string "twitter_url"
+    t.string "instagram_url"
     t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
