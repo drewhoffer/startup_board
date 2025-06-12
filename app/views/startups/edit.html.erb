@@ -36,9 +36,31 @@
         <div class="flex items-center">
           <%= form.text_field :role_names, value: @startup.roles.map(&:title).join(','), placeholder: "Need a tech guru? Designer?", class: "tag-input #{input_classes.render}", data: { controller: "tag", action: "keydown->tag#preventEnter" } %>        </div>
       </div>
-      <div>
-        <%= form.label :url, "Website (optional)", class: "block text-sm font-medium" %>
-        <%= form.url_field :url, class: input_classes.render, placeholder: "https://your-startup-website.com" %>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col gap-2">
+          <%= form.label :website_url, "Website (optional)", class: "block text-sm font-medium" %>
+          <%= form.url_field :website_url, class: input_classes.render, placeholder: "https://your-startup-website.com" %>
+        </div>
+        <div class="flex flex-col gap-2">
+          <%= form.label :instagram_url, "Instagram (optional)", class: "block text-sm font-medium" %>
+          <%= form.url_field :instagram_url, class: input_classes.render, placeholder: "https://instagram.com/yourstartup" %>
+        </div>
+        <div class="flex flex-col gap-2">
+          <%= form.label :twitter_url, "X (optional)", class: "block text-sm font-medium" %>
+          <%= form.url_field :twitter_url, class: input_classes.render, placeholder: "https://x.com/yourstartup" %>
+        </div>
+        <div class="flex flex-col gap-2">
+          <%= form.label :linkedin_url, "LinkedIn (optional)", class: "block text-sm font-medium" %>
+          <%= form.url_field :linkedin_url, class: input_classes.render, placeholder: "https://linkedin.com/company/yourstartup" %>
+        </div>
+        <div class="flex flex-col gap-2">
+          <%= form.label :github_url, "GitHub (optional)", class: "block text-sm font-medium" %>
+          <%= form.url_field :github_url, class: input_classes.render, placeholder: "https://github.com/yourstartup" %>
+        </div>
+        <div class="flex flex-col gap-2">
+          <%= form.label :discord_url, "Discord (optional)", class: "block text-sm font-medium" %>
+          <%= form.url_field :discord_url, class: input_classes.render, placeholder: "https://discord.gg/yourstartup" %>
+        </div>
       </div>
       <div>
         <%= form.submit "Edit Startup", class: button_classes.render %>

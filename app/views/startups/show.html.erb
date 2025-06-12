@@ -11,9 +11,7 @@
           <% end %>
         </div>
       </div>
-      <% unless (@startup.url.nil? || @startup.url.empty?) %>
-        <%= link_to 'Visit Website', @startup.url, class: button_classes.render %>
-      <% end %>
+      <%= render 'social_links', startup: @startup %>
     </div>
     <div class="space-y-4">
       <% @startup.roles.each do |role| %>

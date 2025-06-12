@@ -95,7 +95,16 @@ class StartupsController < ApplicationController
 
   private
   def startup_params
-    params.expect(startup: [ :name, :description, :tag_list, :url, :role_names ])
+    params.require(:startup).permit(:name,
+                                    :description,
+                                    :tag_list,
+                                    :role_names,
+                                    :website_url,
+                                    :instagram_url,
+                                    :twitter_url,
+                                    :linkedin_url,
+                                    :github_url,
+                                    :discord_url)
   end
 
   def set_startup
