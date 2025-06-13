@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :authenticate, only: [ :privacy, :terms ]
+  skip_before_action :authenticate
   def privacy
   end
 
