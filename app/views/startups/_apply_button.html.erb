@@ -1,7 +1,7 @@
 <% if role.taken? %>
   <span class="font-semibold">Taken</span>
 <% elsif Current.user && role.startup.user == Current.user %>
-  <span class="font-semibold">You own this guy</span>
+  <span class="font-semibold"><%= pluralize(role.applicants.count, "applicant") %></span>
 <% elsif Current.user && role.applicants.include?(Current.user) %>
   <span class="font-semibold">Applied</span>
 <% else %>

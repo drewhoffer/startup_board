@@ -19,4 +19,8 @@ class Startup < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     %w[name description created_at]
   end
+
+  def liked_by?(user)
+    user && likes.exists?(user_id: user.id)
+  end
 end

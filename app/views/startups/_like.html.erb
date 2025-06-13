@@ -1,9 +1,10 @@
 <turbo-frame id="like_frame_<%= startup.id %>">
+  <% liked = startup.liked_by?(Current.user) %>
   <%= button_to(
         like_startup_path(startup),
         method: :post,
         form: { data: { turbo: "true" } },
-        class: button_classes.render
+        class: button_classes.render(variant: (liked ?  :invert : :base))
       ) do %>
     <%= raw "&#128077;" %>
     <span class="ml-2"><%= startup.likes.count %> likes</span>

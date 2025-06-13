@@ -1,8 +1,12 @@
 module StyleHelper
   def button_classes
     class_variants(
-      base: "inline-flex items-center rounded-sm bg-white text-sm font-semibold text-black border hover:bg-black hover:border-white hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",
+      base: "inline-flex items-center rounded-sm text-sm font-semibold border focus-visible:outline-2 focus-visible:outline-offset-2 bg-black focus-visible:outline-black",
       variants: {
+        variant: {
+          base: "bg-white text-black hover:bg-black hover:border-white hover:text-white",
+          invert: "bg-black text-white hover:bg-white hover:border-black hover:text-black"
+        },
         size: {
           sm: "px-2.5 py-1.5 text-xs",
           md: "px-3 py-2 text-sm",
@@ -12,6 +16,7 @@ module StyleHelper
         full: "w-full"
       },
       defaults: {
+        base: true,
         size: :md,
         full: false
       }

@@ -4,8 +4,15 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
   before_action :set_current_request_details
   before_action :authenticate
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActionController::RoutingError, with: :render_not_found
+
+  def render_not_found
+    render template: "errors/not_found", status: :not_found
+  end
 
   private
+
 
     def set_current_user
       if session_record = Session.find_by_id(cookies.signed[:session_token])

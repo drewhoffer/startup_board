@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "/privacy", to: "static_pages#privacy"
   get "/terms", to: "static_pages#terms"
+  get "/how-it-works", to: "static_pages#how_it_works"
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"
@@ -29,4 +30,6 @@ Rails.application.routes.draw do
     end
     resources :applications, only: [ :create ]
   end
+
+  match "*path", to: "application#render_not_found", via: :all
 end

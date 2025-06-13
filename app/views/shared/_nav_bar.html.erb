@@ -9,8 +9,9 @@
       </svg>
     <% end %>
     <div class="flex flex-1 gap-2 items-center md:gap-5 justify-end">
-      <%= link_to 'Explore Startups', search_path, class: "text-sm/6 font-semibold" %>
-      <%= link_to 'Submit Startup', new_startup_path, class: "text-sm/6 font-semibold" %>
+      <%= link_to 'How it works', how_it_works_path, class: "text-sm/6 font-semibold hover:underline" %>
+      <%= link_to 'Explore Startups', search_path, class: "text-sm/6 font-semibold hover:underline" %>
+      <%= link_to 'Submit Startup', new_startup_path, class: "text-sm/6 font-semibold hover:underline" %>
       <% if Current.user %>
         <%= button_to 'Logout', session_path(Current.session.id), method: :delete, class: button_classes.render %>
       <% else %>
