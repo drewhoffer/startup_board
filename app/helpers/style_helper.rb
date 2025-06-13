@@ -16,7 +16,7 @@ module StyleHelper
         full: "w-full"
       },
       defaults: {
-        base: true,
+        variant: :base,
         size: :md,
         full: false
       }
